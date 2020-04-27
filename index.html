@@ -27,22 +27,38 @@
 	  max-height: 200px;
 	}
 	.messages {
+	  font-size: 30px;
 	  height: 50px;
 	  color: #f1f1f1;
+	  height: 50px;
 	}
 	.banque-pret {
 	  padding: 10px;
 	  font-size: 40px;
 	  border: 1px solid;
+	  max-width: 75%;
+	  margin: auto;
 	}
 	.documentaliste {
-	  min-width: 100%;
+	  min-width: 75%;
+	  max-width: 75%;
 	}
+	
 	@media only screen and (max-width: 600px) {
 		#main {margin-left: 0}
 		.books {
 		  max-height: 100px;
 		}
+		.messages {
+		  font-size: 20px;
+		}
+		.banque-pret {
+		  max-width: 100%
+		}
+		.documentaliste {
+		  min-width: 100%;
+		  max-width: 100%;
+		 }
 	
 	}
 	</style>
@@ -85,7 +101,7 @@
 	</script>
 </head>
 <body class="w3-black">
-<audio loop autoplay>
+<audio controls loop autoplay>
   <source src="./sounds/ambiance.mp3" type="audio/mp3">
 Your browser does not support the audio element.
 </audio>
