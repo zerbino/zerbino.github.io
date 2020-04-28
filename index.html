@@ -15,12 +15,21 @@
 	/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
 	#main {margin-left: 120px}
 	/* Remove margins from "page content" on small screens */
-	
+	#initial-message-container {
+		text-align: center;
+		padding-top: 300px;
+	}
+	#initial-message {
+		margin-bottom: 20px;
+	}
 	.hide { display:none;}
 	.nice-button {
 		background-color: #f1f1f1;
 		border: none;
 		height: 50px;
+	}
+	.clicable {
+		cursor: pointer;
 	}
 	.sub-sections { margin: 10px 0 }
 	.books {
@@ -91,112 +100,126 @@
 		  setTimeout(function () {
 		     // in case another action has been called before this callback was called, which would display
 			 // another message, we shouldn't erase the new message. 
-			 console.log(divMessage.innerHTML)
-			 console.log(message)
 			if (divMessage.innerHTML == message) {
 				divMessage.innerHTML = '';
 			}
 		 }, messageEndDelay)
 		}
-		var audio = new Audio();
-		audio.src = './sounds/ambiance.mp3';
-		audio.controls = true;
-		audio.autoplay = true;
-		document.body.appendChild(audio);
-
-		var context = new AudioContext();
-		var analyser = context.createAnalyser();
-
-		window.addEventListener('load', function(e) {
-		// Our <audio> element will be the audio source.
-		var source = context.createMediaElementSource(audio);
-		source.connect(analyser);
-		analyser.connect(context.destination);
-
-
-}, false);
+		
+		
+		
 	</script>
 </head>
 <body class="w3-black">
-
-<!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-  <!-- Avatar image in top left corner -->
-  <a href="#banque-pret" class="w3-bar-item w3-button w3-padding-large w3-black">
-    <i class="fa fa-eye w3-xxlarge"></i>
-    <p>EMPRUNTS</p>
-  </a>
-  <a href="#fonds" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-book w3-xxlarge"></i>
-    <p>FONDS</p>
-  </a>
-</nav>
-
-<!-- Navbar on small screens (Hidden on medium and large screens) -->
-<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
-  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="#banque-pret" class="w3-bar-item w3-button" style="width:25% !important">EMPRUNTS</a>
-    <a href="#fonds" class="w3-bar-item w3-button" style="width:25% !important">FONDS</a>
-  </div>
-</div>
-
-<!-- Page Content -->
-<div class="w3-padding-large" id="main">
-  <!-- Header/Home -->
-  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-    <h1 class="w3-jumbo">Le CDI</h1>
-    <p>Coll&egrave;ge Jacqueline Auriol</p>
-	<div id="banque-pret" class="banque-pret">BANQUE DE PRÊT</div>
-    <img id="observe-gif" src="./images/observe.gif" alt="boy" class="w3-image documentaliste"></img>
-	<div id="message-div" class="messages">
+    <div id="initial-message-container">
+		<div id="initial-message">En rentrant dans le CDI, vous profiterez d'une petite musique d'ambiance</div>
+		<button class="nice-button clicable" onclick="enterSite()">OK, je suis prévenu.e</button>
 	</div>
-	<div class="sub-sections">
-	  <button class="nice-button" onclick="playChut()">Parler &agrave; son voisin.</button>
-	</div>
-  </header>
+	<div id="container" class="hide">
+		<audio loop controls src="./sounds/ambiance.mp3" type="audio/mpeg"></audio>
 
-  <!-- About Section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="fonds">
-	<h2 class="w3-text-light-grey">Fictions</h2>
-	<h3 class="w3-text-light-grey">Romans</h3>
+		<!-- Icon Bar (Sidebar - hidden on small screens) -->
+		<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+		  <!-- Avatar image in top left corner -->
+		  <a href="#banque-pret" class="w3-bar-item w3-button w3-padding-large w3-black">
+			<i class="fa fa-eye w3-xxlarge"></i>
+			<p>EMPRUNTS</p>
+		  </a>
+		  <a href="#fonds" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+			<i class="fa fa-book w3-xxlarge"></i>
+			<p>FONDS</p>
+		  </a>
+		</nav>
+
+		<!-- Navbar on small screens (Hidden on medium and large screens) -->
+		<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+		  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+			<a href="#banque-pret" class="w3-bar-item w3-button" style="width:25% !important">EMPRUNTS</a>
+			<a href="#fonds" class="w3-bar-item w3-button" style="width:25% !important">FONDS</a>
+		  </div>
+		</div>
+
+		<!-- Page Content -->
+		<div class="w3-padding-large" id="main">
+		  <!-- Header/Home -->
+		  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+			<h1 class="w3-jumbo">Le CDI</h1>
+			<p>Coll&egrave;ge Jacqueline Auriol</p>
+			<div id="banque-pret" class="banque-pret">BANQUE DE PRÊT</div>
+			<img id="observe-gif" src="./images/observe.gif" alt="boy" class="w3-image documentaliste"></img>
+			<div id="message-div" class="messages">
+			</div>
+			<div class="sub-sections">
+			  <button class="nice-button" onclick="playChut()">Parler &agrave; son voisin.</button>
+			</div>
+		  </header>
+
+		  <!-- About Section -->
+		  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="fonds">
+			<h2 class="w3-text-light-grey">Fictions</h2>
+			<h3 class="w3-text-light-grey">Romans</h3>
+				
+			<a href="#banque-pret" onclick="playEmprunt()">
+				<div title="emprunter ce livre">
+				  <img class="books" src="./images/books.png"/>
+				  <img class="books" src="./images/books2.jpg"/>
+				</div>
+			</a>
+			<a href="#banque-pret" onclick="playEmprunt()">
+				<div>	
+				  <h3 class="w3-text-light-grey">P&eacute;riodiques</h3>
+				  <img title="emprunter un p&eacute;riodique" class="books" src="./images/periodiques.png"/>
+				</div>
+			</a>
+			<div>
+			   <h3 class="w3-text-light-grey">BD/Mangas</h3>
+			   <img class="books" src="./images/web.png"/>
+
+			</div>
+
+			<!-- Footer -->
+		  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+			<i class="fa fa-facebook-official w3-hover-opacity"></i>
+			<i class="fa fa-instagram w3-hover-opacity"></i>
+			<i class="fa fa-snapchat w3-hover-opacity"></i>
+			<i class="fa fa-pinterest-p w3-hover-opacity"></i>
+			<i class="fa fa-twitter w3-hover-opacity"></i>
+			<i class="fa fa-linkedin w3-hover-opacity"></i>
+			<p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+		  <!-- End footer -->
+		  </footer>
+
+		<!-- END PAGE CONTENT -->
+		</div>
+	</div>
+<script>
+		function hideElement(element) {
+			element.classList.add("hide");
+		}
+		function showElement(element) {
+			element.classList.remove("hide");
+		}
+		function enterSite() {
+			hideElement(document.getElementById("initial-message-container"));
+			showElement(document.getElementById("container"));
+			playMusic();
+		}
+		// for legacy browsers
+		var AudioContext = window.AudioContext || window.webkitAudioContext;
+		var audioContext = new AudioContext();
+		var audioElement = document.querySelector('audio');
+		var track = audioContext.createMediaElementSource(audioElement);
+		track.connect(audioContext.destination);
+		function playMusic () {
+			 // check if context is in suspended state (autoplay policy)
+			if (audioContext.state === 'suspended') {
+				audioContext.resume();
+			}
+			audioElement.play();
+			
+
+		}
 		
-	<a href="#banque-pret" onclick="playEmprunt()">
-		<div title="emprunter ce livre">
-		  <img class="books" src="./images/books.png"/>
-		  <img class="books" src="./images/books2.jpg"/>
-		</div>
-	</a>
-	<a href="#banque-pret" onclick="playEmprunt()">
-		<div>	
-		  <h3 class="w3-text-light-grey">P&eacute;riodiques</h3>
-		  <img title="emprunter un p&eacute;riodique" class="books" src="./images/periodiques.png"/>
-		</div>
-	</a>
-	<div>
-	   <h3 class="w3-text-light-grey">BD/Mangas</h3>
-	   <img class="books" src="./images/web.png"/>
-
-	</div>
-
-	
-
-   
-  
-  
-    <!-- Footer -->
-  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-  <!-- End footer -->
-  </footer>
-
-<!-- END PAGE CONTENT -->
-</div>
-
+</script>
 </body>
 </html>
