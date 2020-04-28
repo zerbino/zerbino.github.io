@@ -22,6 +22,9 @@
 	#initial-message {
 		margin-bottom: 20px;
 	}
+	.theme-text-color {
+		color: #f1f1f1;
+	}
 	.hide { display:none;}
 	.nice-button {
 		background-color: #f1f1f1;
@@ -60,6 +63,7 @@
 		}
 		.messages {
 		  font-size: 20px;
+		  height: 78px;
 		}
 		.banque-pret {
 		  max-width: 100%
@@ -67,8 +71,10 @@
 		.documentaliste {
 		  min-width: 100%;
 		  max-width: 100%;
-		 }
-	
+		}
+		#initial-message-container {
+			padding-top: 230px;
+		}
 	}
 	</style>
 	<script>
@@ -116,7 +122,7 @@
 		<button class="nice-button clicable" onclick="enterSite()">OK, je suis prévenu.e</button>
 	</div>
 	<div id="container" class="hide">
-		<audio loop controls src="./sounds/ambiance.mp3" type="audio/mpeg"></audio>
+		<audio loop src="./sounds/ambiance.mp3" type="audio/mpeg"></audio>
 
 		<!-- Icon Bar (Sidebar - hidden on small screens) -->
 		<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
@@ -157,6 +163,7 @@
 		  <!-- About Section -->
 		  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="fonds">
 			<h2 class="w3-text-light-grey">Fictions</h2>
+			<div class="theme-text-color w3-hide-large">Appuyez sur les éléments que vous souhaitez emprunter.</div>
 			<h3 class="w3-text-light-grey">Romans</h3>
 				
 			<a href="#banque-pret" onclick="playEmprunt()">
@@ -174,7 +181,6 @@
 			<div>
 			   <h3 class="w3-text-light-grey">BD/Mangas</h3>
 			   <img class="books" src="./images/web.png"/>
-
 			</div>
 
 			<!-- Footer -->
